@@ -26,7 +26,7 @@
   "require-dev": {
     "league/plates": "^3.0",
     "league/route": "^1.0",
-    "phpunit/phpunit": "^8.0.0|^9.0.0"
+    "phpunit/phpunit": "^12.0.0"
   },
   "autoload-dev": {
     "files": [
