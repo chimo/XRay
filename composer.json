@@ -11,9 +11,15 @@
     "p3k/timezone": "^0.1.0",
     "p3k/http": "^0.1.0",
     "cebe/markdown": "^1.1.0",
-    "p3k/picofeed": "^0.1.0",
+    "p3k/picofeed": "dev-main#781a10cac4a7477be83ece542d3d7cad60e1b0e6",
     "masterminds/html5": "^2.3"
   },
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "https://github.com/aaronpk/picofeed"
+    }
+  ],
   "autoload": {
     "psr-4": {
       "p3k\\XRay\\": "lib/XRay"

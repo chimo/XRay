@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "62ad2c08358b0b32775ae30a3b14c51d",
+    "content-hash": "b98d2da6a996ddeeb99bbb663115e13c",
     "packages": [
         {
             "name": "cebe/markdown",
@@ -414,16 +414,16 @@
         },
         {
             "name": "p3k/picofeed",
-            "version": "v0.1.40",
+            "version": "dev-main",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aaronpk/picofeed.git",
-                "reference": "356fd66d48779193b10ac28532cb4a4e11bb801c"
+                "reference": "781a10cac4a7477be83ece542d3d7cad60e1b0e6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aaronpk/picofeed/zipball/356fd66d48779193b10ac28532cb4a4e11bb801c",
-                "reference": "356fd66d48779193b10ac28532cb4a4e11bb801c",
+                "url": "https://api.github.com/repos/aaronpk/picofeed/zipball/781a10cac4a7477be83ece542d3d7cad60e1b0e6",
+                "reference": "781a10cac4a7477be83ece542d3d7cad60e1b0e6",
                 "shasum": ""
             },
             "require": {
@@ -446,6 +446,7 @@
             "suggest": {
                 "ext-curl": "PicoFeed will use cURL if present"
             },
+            "default-branch": true,
             "bin": [
                 "picofeed"
             ],
@@ -455,7 +456,6 @@
                     "PicoFeed": "lib/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -467,10 +467,10 @@
             "description": "Modern library to handle RSS/Atom feeds",
             "homepage": "https://github.com/aaronpk/picoFeed",
             "support": {
-                "issues": "https://github.com/aaronpk/picofeed/issues",
-                "source": "https://github.com/aaronpk/picofeed/tree/v0.1.40"
+                "source": "https://github.com/aaronpk/picofeed/tree/main",
+                "issues": "https://github.com/aaronpk/picofeed/issues"
             },
-            "time": "2020-04-25T17:48:36+00:00"
+            "time": "2023-10-30T15:53:21+00:00"
         },
         {
             "name": "p3k/timezone",
@@ -993,16 +993,16 @@
         },
         {
             "name": "phpunit/php-code-coverage",
-            "version": "12.0.5",
+            "version": "12.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-code-coverage.git",
-                "reference": "da732486790670c622aa367eb3dbb7e1619e68be"
+                "reference": "d331a5ced3d9a2b917baa9841b2211e72f9e780d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/da732486790670c622aa367eb3dbb7e1619e68be",
-                "reference": "da732486790670c622aa367eb3dbb7e1619e68be",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/d331a5ced3d9a2b917baa9841b2211e72f9e780d",
+                "reference": "d331a5ced3d9a2b917baa9841b2211e72f9e780d",
                 "shasum": ""
             },
             "require": {
@@ -1029,7 +1029,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-main": "12.0.x-dev"
+                    "dev-main": "12.1.x-dev"
                 }
             },
             "autoload": {
@@ -1058,7 +1058,7 @@
             "support": {
                 "issues": "https://github.com/sebastianbergmann/php-code-coverage/issues",
                 "security": "https://github.com/sebastianbergmann/php-code-coverage/security/policy",
-                "source": "https://github.com/sebastianbergmann/php-code-coverage/tree/12.0.5"
+                "source": "https://github.com/sebastianbergmann/php-code-coverage/tree/12.1.0"
             },
             "funding": [
                 {
@@ -1066,7 +1066,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-03-15T07:24:51+00:00"
+            "time": "2025-03-17T13:56:07+00:00"
         },
         {
             "name": "phpunit/php-file-iterator",
@@ -2602,7 +2602,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {},
+    "stability-flags": {
+        "p3k/picofeed": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {},
