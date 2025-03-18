@@ -191,7 +191,8 @@ class SanitizeTest extends PHPUnit\Framework\TestCase
         $this->assertEquals(200, $response->getStatusCode());
         $data = json_decode($body);
 
-        $this->assertObjectNotHasAttribute('name', $data->data);
+        $this->assertIsObject($data->data);
+	$this->assertFalse(property_exists($data->data, 'name'));
         $this->assertEquals('http://target.example.com/photo.jpg', $data->data->photo[0]);
         $this->assertEquals('This is a photo post with an img tag inside the content.', $data->data->content->text);
         $this->assertEquals('This is a photo post with an <code>img</code> tag inside the content.', $data->data->content->html);
@@ -208,7 +209,8 @@ class SanitizeTest extends PHPUnit\Framework\TestCase
     $this->assertEquals(200, $response->getStatusCode());
     $data = json_decode($body);
 
-    $this->assertObjectNotHasAttribute('name', $data->data);
+    $this->assertIsObject($data->data);
+	$this->assertFalse(property_exists($data->data, 'name'));
     $this->assertEquals('http://target.example.com/photo.jpg', $data->data->photo[0]);
     $this->assertEquals('This is a photo post with an img tag inside the content.', $data->data->content->text);
     $this->assertEquals('This is a photo post with an <code>img</code> tag inside the content.', $data->data->content->html);
@@ -250,7 +252,8 @@ class SanitizeTest extends PHPUnit\Framework\TestCase
         $this->assertEquals(200, $response->getStatusCode());
         $data = json_decode($body);
 
-        $this->assertObjectNotHasAttribute('name', $data->data);
+        $this->assertIsObject($data->data);
+	$this->assertFalse(property_exists($data->data, 'name'));
         $this->assertEquals('http://target.example.com/photo.jpg', $data->data->photo[0]);
         $this->assertEquals('This is a photo post with an img tag inside the content.', $data->data->content->text);
         $this->assertEquals('This is a photo post with an <code>img</code> tag inside the content.', $data->data->content->html);
@@ -267,7 +270,8 @@ class SanitizeTest extends PHPUnit\Framework\TestCase
         $this->assertEquals(200, $response->getStatusCode());
         $data = json_decode($body);
 
-        $this->assertObjectNotHasAttribute('name', $data->data);
+        $this->assertIsObject($data->data);
+	$this->assertFalse(property_exists($data->data, 'name'));
         $this->assertEquals('http://target.example.com/photo.jpg', $data->data->photo[0]);
         $this->assertEquals('This is a photo post with an img tag inside the content.', $data->data->content->text);
         $this->assertEquals('This is a photo post with an <code>img</code> tag inside the content.', $data->data->content->html);
@@ -282,9 +286,11 @@ class SanitizeTest extends PHPUnit\Framework\TestCase
         $this->assertEquals(200, $response->getStatusCode());
         $data = json_decode($body);
 
-        $this->assertObjectHasAttribute('name', $data->data);
+        $this->assertIsObject($data->data);
+	$this->assertTrue(property_exists($data->data, 'name'));
         $this->assertEquals('Oh, how well they know me! 🥃', $data->data->name);
-        $this->assertObjectNotHasAttribute('content', $data->data);
+        $this->assertIsObject($data->data);
+	$this->assertFalse(property_exists($data->data, 'content'));
         $this->assertEquals('https://cleverdevil.io/file/5bf2fa91c3d4c592f9978200923cb56e/thumb.jpg', $data->data->photo[0]);
     }
 
@@ -298,9 +304,11 @@ class SanitizeTest extends PHPUnit\Framework\TestCase
         $this->assertEquals(200, $response->getStatusCode());
         $data = json_decode($body);
 
-        $this->assertObjectHasAttribute('name', $data->data);
+        $this->assertIsObject($data->data);
+	$this->assertTrue(property_exists($data->data, 'name'));
         $this->assertEquals('Photo caption', $data->data->name);
-        $this->assertObjectNotHasAttribute('content', $data->data);
+        $this->assertIsObject($data->data);
+	$this->assertFalse(property_exists($data->data, 'content'));
         $this->assertEquals('http://sanitize.example/photo.jpg', $data->data->photo[0]);
     }
 
@@ -315,9 +323,11 @@ class SanitizeTest extends PHPUnit\Framework\TestCase
         $this->assertEquals(200, $response->getStatusCode());
         $data = json_decode($body);
 
-        $this->assertObjectHasAttribute('content', $data->data);
+        $this->assertIsObject($data->data);
+	$this->assertTrue(property_exists($data->data, 'content'));
         $this->assertEquals('Photo caption', $data->data->content->text);
-        $this->assertObjectNotHasAttribute('name', $data->data);
+        $this->assertIsObject($data->data);
+	$this->assertFalse(property_exists($data->data, 'name'));
         $this->assertEquals('http://sanitize.example/photo.jpg', $data->data->photo[0]);
     }
 
@@ -398,7 +408,8 @@ class SanitizeTest extends PHPUnit\Framework\TestCase
         $data = json_decode($body);
 
         $this->assertEquals('🌆 Made it to the first #NPSF #earlygang of the year, did in-betweeners abs, and 6:30 workout with a brutal burnout that was really its own workout. But wow pretty sunrise. Plus 50+ deg F? I’ll take it. #100PDPD'."\n\n".'#justshowup #darknesstodawn #wakeupthesun #fromwhereirun #NovemberProject #sunrise #latergram #nofilter', $data->data->content->text);
-        $this->assertObjectNotHasAttribute('name', $data->data);
+        $this->assertIsObject($data->data);
+	$this->assertFalse(property_exists($data->data, 'name'));
         $this->assertEquals('https://igx.4sqi.net/img/general/original/476_g7yruXflacsGr7PyVmECefyTBMB_R99zmPQxW7pftzA.jpg', $data->data->photo[0]);
         $this->assertEquals('https://igx.4sqi.net/img/general/original/476_zM3UgU9JHNhom907Ac_1WCEcUhGOJZaNWGlRmev86YA.jpg', $data->data->photo[1]);
     }
@@ -418,8 +429,10 @@ class SanitizeTest extends PHPUnit\Framework\TestCase
         $this->assertEquals(200, $response->getStatusCode());
         $data = json_decode($body);
 
-        $this->assertObjectNotHasAttribute('photo', $data->data);
-        $this->assertObjectNotHasAttribute('name', $data->data);
+        $this->assertIsObject($data->data);
+	$this->assertFalse(property_exists($data->data, 'photo'));
+        $this->assertIsObject($data->data);
+	$this->assertFalse(property_exists($data->data, 'name'));
         $this->assertEquals('This is a photo post with an img tag inside the content, which does not have a u-photo class so should not be removed.', $data->data->content->text);
         $this->assertEquals('This is a photo post with an <code>img</code> tag inside the content, which does not have a u-photo class so should not be removed. <img src="http://target.example.com/photo.jpg" alt="a photo" />', $data->data->content->html);
     }

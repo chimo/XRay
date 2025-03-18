@@ -35,7 +35,8 @@ class FetchTest extends PHPUnit\Framework\TestCase
         $body = $response->getContent();
         $this->assertEquals(200, $response->getStatusCode());
         $data = json_decode($body);
-        $this->assertObjectHasAttribute('error', $data);
+	$this->assertIsObject($data);
+	$this->assertTrue(property_exists($data, 'error'));
         $this->assertEquals('too_many_redirects', $data->error);
 
         $url = 'http://redirect.example.com/2';
@@ -48,7 +49,8 @@ class FetchTest extends PHPUnit\Framework\TestCase
         $body = $response->getContent();
         $this->assertEquals(200, $response->getStatusCode());
         $data = json_decode($body);
-        $this->assertObjectHasAttribute('error', $data);
+	$this->assertIsObject($data);
+	$this->assertTrue(property_exists($data, 'error'));
         $this->assertEquals('too_many_redirects', $data->error);
     }
 
@@ -65,7 +67,8 @@ class FetchTest extends PHPUnit\Framework\TestCase
         $body = $response->getContent();
         $this->assertEquals(200, $response->getStatusCode());
         $data = json_decode($body);
-        $this->assertObjectNotHasAttribute('error', $data);
+	$this->assertIsObject($data);
+	$this->assertFalse(property_exists($data, 'error'));
         $this->assertEquals(200, $data->code);
         $this->assertEquals('The Final Page', $data->data->name);
         $this->assertEquals('http://redirect.example.com/0', $data->url);
@@ -83,7 +86,8 @@ class FetchTest extends PHPUnit\Framework\TestCase
         $body = $response->getContent();
         $this->assertEquals(200, $response->getStatusCode());
         $data = json_decode($body);
-        $this->assertObjectNotHasAttribute('error', $data);
+	$this->assertIsObject($data);
+	$this->assertFalse(property_exists($data, 'error'));
         $this->assertEquals($url, $data->url);
         $this->assertEquals(418, $data->code);
     }
@@ -100,7 +104,8 @@ class FetchTest extends PHPUnit\Framework\TestCase
         $body = $response->getContent();
         $this->assertEquals(200, $response->getStatusCode());
         $data = json_decode($body);
-        $this->assertObjectHasAttribute('error', $data);
+	$this->assertIsObject($data);
+	$this->assertTrue(property_exists($data, 'error'));
         $this->assertEquals('forbidden', $data->error);
         $this->assertEquals($url, $data->url);
         $this->assertEquals(403, $data->code);
@@ -118,7 +123,8 @@ class FetchTest extends PHPUnit\Framework\TestCase
         $body = $response->getContent();
         $this->assertEquals(200, $response->getStatusCode());
         $data = json_decode($body);
-        $this->assertObjectHasAttribute('error', $data);
+	$this->assertIsObject($data);
+	$this->assertTrue(property_exists($data, 'error'));
         $this->assertEquals('unauthorized', $data->error);
         $this->assertEquals($url, $data->url);
         $this->assertEquals(401, $data->code);
@@ -136,7 +142,8 @@ class FetchTest extends PHPUnit\Framework\TestCase
         $body = $response->getContent();
         $this->assertEquals(200, $response->getStatusCode());
         $data = json_decode($body);
-        $this->assertObjectNotHasAttribute('error', $data);
+	$this->assertIsObject($data);
+	$this->assertFalse(property_exists($data, 'error'));
         $this->assertEquals(410, $data->code);
         $this->assertEquals('This post has been deleted.', $data->data->content->text);
     }
@@ -153,7 +160,8 @@ class FetchTest extends PHPUnit\Framework\TestCase
         $body = $response->getContent();
         $this->assertEquals(200, $response->getStatusCode());
         $data = json_decode($body);
-        $this->assertObjectNotHasAttribute('error', $data);
+	$this->assertIsObject($data);
+	$this->assertFalse(property_exists($data, 'error'));
         $this->assertEquals(410, $data->code);
         $this->assertEquals('unknown', $data->data->type);
     }
@@ -171,7 +179,8 @@ class FetchTest extends PHPUnit\Framework\TestCase
         $body = $response->getContent();
         $this->assertEquals(200, $response->getStatusCode());
         $data = json_decode($body);
-        $this->assertObjectHasAttribute('error', $data);
+	$this->assertIsObject($data);
+	$this->assertTrue(property_exists($data, 'error'));
         $this->assertEquals('no_link_found', $data->error);
         $this->assertEquals(410, $data->code);
     }
@@ -188,7 +197,8 @@ class FetchTest extends PHPUnit\Framework\TestCase
         $body = $response->getContent();
         $this->assertEquals(200, $response->getStatusCode());
         $data = json_decode($body);
-        $this->assertObjectNotHasAttribute('error', $data);
+	$this->assertIsObject($data);
+	$this->assertFalse(property_exists($data, 'error'));
         $this->assertEquals(410, $data->code);
         $this->assertEquals('This post has been deleted.', $data->data->content->text);
     }
@@ -205,7 +215,8 @@ class FetchTest extends PHPUnit\Framework\TestCase
         $body = $response->getContent();
         $this->assertEquals(200, $response->getStatusCode());
         $data = json_decode($body);
-        $this->assertObjectNotHasAttribute('error', $data);
+	$this->assertIsObject($data);
+	$this->assertFalse(property_exists($data, 'error'));
         $this->assertEquals(410, $data->code);
         $this->assertEquals('This post has been deleted.', $data->data->content->text);
     }
@@ -225,7 +236,8 @@ class FetchTest extends PHPUnit\Framework\TestCase
         $body = $response->getContent();
         $this->assertEquals(200, $response->getStatusCode());
         $data = json_decode($body);
-        $this->assertObjectHasAttribute('error', $data);
+	$this->assertIsObject($data);
+	$this->assertTrue(property_exists($data, 'error'));
         $this->assertEquals('no_link_found', $data->error);
         $this->assertEquals(410, $data->code);
     }
